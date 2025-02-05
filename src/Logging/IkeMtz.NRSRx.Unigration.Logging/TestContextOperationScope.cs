@@ -1,8 +1,7 @@
-using System;
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace IkeMtz.NRSRx.Core.Unigration.Logging
+namespace IkeMtz.NRSRx.Unigration.Logging
 {
   /// <summary>
   /// Represents a scope for logging operations within a test context.

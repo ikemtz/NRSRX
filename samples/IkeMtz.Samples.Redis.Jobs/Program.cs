@@ -1,5 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
-using IkeMtz.NRSRx.Core.Jobs;
+using IkeMtz.NRSRx.Jobs.Core;
 using IkeMtz.NRSRx.Events;
 using IkeMtz.NRSRx.Events.Abstraction;
 using IkeMtz.NRSRx.Events.Subscribers.Redis;
@@ -10,7 +10,7 @@ using StackExchange.Redis;
 
 namespace IkeMtz.Samples.Redis.Jobs
 {
-  public class Program : MessagingJob<Program>
+  public class Program : JobBase<Program>, IJob
   {
     public ConnectionMultiplexer RedisConnectionMultiplexer { get; private set; }
     public override string? HealthFileLocation => "health.txt";
@@ -27,8 +27,8 @@ namespace IkeMtz.Samples.Redis.Jobs
     public override IServiceCollection SetupFunctions(IServiceCollection services)
     {
       return services
-        .AddMessageFunction<SchoolCreatedFunction>()
-        .AddMessageFunction<SchoolUpdatedSplitFunction>();
+        .AddFunction<SchoolCreatedFunction>()
+        .AddFunction<SchoolUpdatedSplitFunction>();
     }
 
     [ExcludeFromCodeCoverage]

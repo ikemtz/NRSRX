@@ -3,7 +3,9 @@ using IkeMtz.NRSRx.Core.Unigration.Events;
 using IkeMtz.NRSRx.Events;
 using IkeMtz.NRSRx.Events.Abstraction;
 using IkeMtz.NRSRx.Events.Subscribers.Redis;
+using IkeMtz.NRSRx.Jobs.Core;
 using IkeMtz.NRSRx.Jobs.Redis;
+using IkeMtz.NRSRx.Jobs.Unigration;
 using IkeMtz.Samples.Models.V1;
 using IkeMtz.Samples.Tests;
 using Microsoft.Extensions.DependencyInjection;
@@ -57,7 +59,7 @@ namespace IkeMtz.NRSRx.Core.Jobs.Redis.Tests.Unigration
     }
   }
 
-  internal class SplitMessageUnigrationProgram : CoreMessagingUnigrationTestJob<SplitProgram>
+  internal class SplitMessageUnigrationProgram : CoreMessagingUnigrationTestJob<SplitProgram>, IJob
   {
     public Mock<RedisStreamSubscriber<SplitMessage<School>, CreatedEvent>> MockSubscriber { get; set; }
     public SplitMessageUnigrationProgram(SplitProgram program, TestContext testContext) : base(program, testContext)
@@ -72,7 +74,7 @@ namespace IkeMtz.NRSRx.Core.Jobs.Redis.Tests.Unigration
       return services.AddSingleton(x => MockSubscriber.Object);
     }
   }
-  public class SplitProgram : MessagingJob<SplitProgram>
+  public class SplitProgram : JobBase<SplitProgram>, IJob
   {
     public override IServiceCollection SetupFunctions(IServiceCollection services)
     {

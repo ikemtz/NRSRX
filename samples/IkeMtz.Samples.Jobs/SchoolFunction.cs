@@ -1,4 +1,4 @@
-using IkeMtz.NRSRx.Core.Jobs;
+using IkeMtz.NRSRx.Jobs.Core;
 using IkeMtz.Samples.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;

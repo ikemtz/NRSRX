@@ -27,11 +27,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.12" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.1" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.7.3" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
+    <PackageReference Include="Serilog.Sinks.Splunk" Version="5.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\IkeMtz.NRSRx.Core.Jobs\IkeMtz.NRSRx.Core.Jobs.csproj" />
     <ProjectReference Include="..\..\src\IkeMtz.NRSRx.Core.WebApi\IkeMtz.NRSRx.Core.WebApi.csproj" />
     <ProjectReference Include="..\..\src\Logging\IkeMtz.NRSRx.Jobs.Logging.Splunk\IkeMtz.NRSRx.Jobs.Logging.Splunk.csproj" />
     <ProjectReference Include="..\IkeMtz.Samples.WebApi\IkeMtz.Samples.WebApi.csproj" />

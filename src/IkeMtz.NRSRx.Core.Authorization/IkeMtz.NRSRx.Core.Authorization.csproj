@@ -22,7 +22,7 @@
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <PropertyGroup>
     <NoWarn>1701;1702;CS1591</NoWarn>
     <DocumentationFile>./IkeMtz.NRSRx.Core.Authorization.xml</DocumentationFile>
   </PropertyGroup>

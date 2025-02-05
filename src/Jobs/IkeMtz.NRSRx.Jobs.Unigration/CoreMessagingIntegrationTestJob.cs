@@ -1,8 +1,8 @@
-using IkeMtz.NRSRx.Core.Jobs;
+using IkeMtz.NRSRx.Jobs.Core;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace IkeMtz.NRSRx.Core.Unigration.Jobs
+namespace IkeMtz.NRSRx.Jobs.Unigration
 {
   /// <summary>
   /// Represents a core messaging integration test job for testing purposes.

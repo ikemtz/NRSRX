@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IkeMtz.NRSRx.Events.Subscribers.Redis</name>
+    </assembly>
+    <members>
+        <member name="T:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamConsumerMetadata">
+            <summary>
+            Represents metadata for a Redis stream consumer.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamConsumerMetadata.Name">
+            <summary>
+            Gets or sets the name of the consumer.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamConsumerMetadata.PendingMsgCount">
+            <summary>
+            Gets or sets the count of pending messages for the consumer.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamConsumerMetadata.IdleTimeInMs">
+            <summary>
+            Gets or sets the idle time in milliseconds for the consumer.
+            </summary>
+        </member>
+        <member name="T:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`2">
+            <summary>
+            Redis stream subscriber for handling events with a GUID identifier.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <typeparam name="TEvent">The type of the event.</typeparam>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`2.#ctor(StackExchange.Redis.IConnectionMultiplexer,IkeMtz.NRSRx.Events.Subscribers.Redis.RedisSubscriberOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`2"/> class.
+            </summary>
+            <param name="connection">The Redis connection multiplexer.</param>
+            <param name="options">The subscriber options.</param>
+        </member>
+        <member name="T:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3">
+            <summary>
+            Redis stream subscriber for handling events.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <typeparam name="TEvent">The type of the event.</typeparam>
+            <typeparam name="TIdentityType">The type of the identity.</typeparam>
+        </member>
+        <member name="T:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.MessageRecievedEventHandler">
+            <summary>
+            Delegate for handling received messages.
+            </summary>
+            <param name="entity">The received entity.</param>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.ConsumerName">
+            <summary>
+            Gets or sets the consumer name.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.ConsumerGroupName">
+            <summary>
+            Gets the consumer group name.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.DeadConsumerName">
+            <summary>
+            Gets the dead consumer name.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.ConsumerGroupAckCounterKey">
+            <summary>
+            Gets or sets the consumer group acknowledgment counter key.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.Subscribed">
+            <summary>
+            Gets a value indicating whether the subscriber is subscribed.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.IsInitialized">
+            <summary>
+            Gets a value indicating whether the subscriber is initialized.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.Options">
+            <summary>
+            Gets the subscriber options.
+            </summary>
+        </member>
+        <member name="E:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.OnMessageReceived">
+            <summary>
+            Occurs when a message is received.
+            </summary>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.#ctor(StackExchange.Redis.IConnectionMultiplexer,IkeMtz.NRSRx.Events.Subscribers.Redis.RedisSubscriberOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3"/> class.
+            </summary>
+            <param name="connection">The Redis connection multiplexer.</param>
+            <param name="options">The subscriber options.</param>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.Init">
+            <summary>
+            Initializes the subscriber.
+            </summary>
+            <returns>True if initialization is successful; otherwise, false.</returns>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.GetStreamInfoAsync">
+            <summary>
+            Gets the stream information asynchronously.
+            </summary>
+            <returns>A task that represents the asynchronous operation. The task result contains the message queue information.</returns>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.GetMessagesAsync(System.Nullable{System.Int32})">
+            <summary>
+            Gets the messages asynchronously.
+            </summary>
+            <param name="messageCount">The number of messages to retrieve.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains the messages.</returns>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.DeleteIdleConsumersAsync">
+            <summary>
+            Deletes idle consumers and returns the deleted count.
+            </summary>
+            <returns>A task that represents the asynchronous operation. The task result contains the number of deleted consumers.</returns>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.GetPendingMessagesAsync(System.Nullable{System.Int32})">
+            <summary>
+            Gets the pending messages asynchronously.
+            </summary>
+            <param name="messageCount">The number of messages to retrieve.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains the pending messages.</returns>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.GetConsumerInfoAsync">
+            <summary>
+            Gets the consumer information asynchronously.
+            </summary>
+            <returns>A task that represents the asynchronous operation. The task result contains the consumer information.</returns>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.GetIdleConsumersWithPendingMsgsAsync">
+            <summary>
+            Gets the idle consumers with pending messages asynchronously.
+            </summary>
+            <returns>A task that represents the asynchronous operation. The task result contains the idle consumers with pending messages.</returns>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.AcknowledgeMessageAsync(StackExchange.Redis.RedisValue)">
+            <summary>
+            Acknowledges a message asynchronously.
+            </summary>
+            <param name="redisValue">The Redis value of the message to acknowledge.</param>
+            <returns>A task that represents the asynchronous operation. The task result contains the acknowledgment result.</returns>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.Subscribe(System.Int32)">
+            <summary>
+            Subscribes to the stream and processes messages.
+            </summary>
+            <param name="pollFrequency">The frequency to poll for new messages, in milliseconds.</param>
+            <returns>A task that represents the asynchronous operation.</returns>
+            <exception cref="T:System.InvalidProgramException">Thrown if the OnMessageReceived event is not handled before subscribing.</exception>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisStreamSubscriber`3.ValidateInit">
+            <summary>
+            Validates the initialization of the subscriber.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisSubscriberOptions.StartPosition">
+            <summary>
+            This should be set to either StreamPosition.Beginning or StreamConstants.NewMessages
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisSubscriberOptions.IdleTimeSpanInMilliseconds">
+            <summary>
+            The amount of time in (ms) to wait before considering a consumer Idle.
+            Default value 10 Minutes
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisSubscriberOptions.MaxMessageProcessRetry">
+            <summary>
+            Maximum amount of times to retry to process a message.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisSubscriberOptions.ConsumerGroupName">
+            <summary>
+            The consumer group name for the subscriber
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisSubscriberOptions.MessagesPerBatchCount">
+            <summary>
+            The amount of messages to get per GetMessagesAsync request
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Subscribers.Redis.RedisSubscriberOptions.PendingMessagesPerBatchCount">
+            <summary>
+            The amount of pending messages to get per GetMessagesAsync request
+            </summary>
+        </member>
+        <member name="T:IkeMtz.NRSRx.Events.Abstraction.Redis.RedisStreamCore`3">
+            <summary>
+            Core class for handling Redis streams for a specific entity and event type.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <typeparam name="TEvent">The type of the event.</typeparam>
+            <typeparam name="TIdentityType">The type of the entity identifier.</typeparam>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Abstraction.Redis.RedisStreamCore`3.EntityType">
+            <summary>
+            Gets the type of the entity.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Abstraction.Redis.RedisStreamCore`3.TypeName">
+            <summary>
+            Gets the name of the type.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Abstraction.Redis.RedisStreamCore`3.Connection">
+            <summary>
+            Gets the Redis connection multiplexer.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Abstraction.Redis.RedisStreamCore`3.Database">
+            <summary>
+            Gets the Redis database.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Abstraction.Redis.RedisStreamCore`3.StreamKey">
+            <summary>
+            Gets the Redis stream key.
+            </summary>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Events.Abstraction.Redis.RedisStreamCore`3.#ctor(StackExchange.Redis.IConnectionMultiplexer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IkeMtz.NRSRx.Events.Abstraction.Redis.RedisStreamCore`3"/> class.
+            </summary>
+            <param name="connection">The Redis connection multiplexer.</param>
+        </member>
+    </members>
+</doc>

@@ -1,4 +1,4 @@
-using IkeMtz.NRSRx.Core.Jobs;
+using IkeMtz.NRSRx.Jobs.Core;
 using IkeMtz.Samples.Data;
 using IkeMtz.Samples.Models.V1;
 using Microsoft.EntityFrameworkCore;

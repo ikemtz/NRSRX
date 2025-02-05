@@ -1,5 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
-using IkeMtz.NRSRx.Core.Jobs;
+using IkeMtz.NRSRx.Jobs.Core;
 using IkeMtz.Samples.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace IkeMtz.Samples.Jobs
 {
-  public class Program : Job<Program>
+  public class Program : JobBase<Program>, IJob
   {
     public static async Task Main()
     {

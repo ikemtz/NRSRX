@@ -1,8 +1,9 @@
-using IkeMtz.NRSRx.Core.Unigration;
 using IkeMtz.NRSRx.Core.Unigration.Events;
 using IkeMtz.NRSRx.Events;
 using IkeMtz.NRSRx.Events.Abstraction;
 using IkeMtz.NRSRx.Events.Subscribers.Redis;
+using IkeMtz.NRSRx.Jobs.Core;
+using IkeMtz.NRSRx.Jobs.Unigration;
 using IkeMtz.Samples.Models.V1;
 using IkeMtz.Samples.Redis.Jobs;
 using IkeMtz.Samples.Tests;
@@ -11,7 +12,7 @@ using Moq;
 
 namespace IkeMtz.NRSRx.Core.Jobs.Redis.Tests.Unigration
 {
-  internal class UnigrationProgram : CoreMessagingUnigrationTestJob<Program>
+  internal class UnigrationProgram : CoreMessagingUnigrationTestJob<Program>, IJob
   {
     public Mock<RedisStreamSubscriber<School, CreateEvent>> SchoolCreatedSubMock { get; set; }
     public Mock<RedisStreamSubscriber<SplitMessage<School>, UpdatedEvent>> SchoolUpdatedSplitSubMock { get; set; }

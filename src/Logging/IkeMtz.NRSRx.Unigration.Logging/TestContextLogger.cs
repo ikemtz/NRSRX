@@ -1,9 +1,9 @@
-using System;
+using IkeMtz.NRSRx.Core;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 
-namespace IkeMtz.NRSRx.Core.Unigration.Logging
+namespace IkeMtz.NRSRx.Unigration.Logging
 {
   /// <summary>
   /// A logger implementation that writes log messages to the MSTest <see cref="TestContext"/>.

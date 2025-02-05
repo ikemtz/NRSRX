@@ -1,5 +1,5 @@
 using IkeMtz.NRSRx.Core.EntityFramework;
-using IkeMtz.NRSRx.Core.Unigration.Logging;
+using IkeMtz.NRSRx.Unigration.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Logging;

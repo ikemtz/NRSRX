@@ -1,4 +1,4 @@
-name: 8.0.$(DayOfYear)$(Rev:.rr)
+name: 8.1.$(DayOfYear)$(Rev:.rr)
 pool:
   vmImage: "windows-latest"
 

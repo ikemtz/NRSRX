@@ -1,5 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
-using IkeMtz.NRSRx.Core.Jobs;
+using IkeMtz.NRSRx.Jobs.Core;
 using IkeMtz.NRSRx.Core.Models;
 using IkeMtz.NRSRx.Events;
 using IkeMtz.NRSRx.Events.Abstraction;

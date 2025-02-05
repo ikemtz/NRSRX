@@ -2,7 +2,7 @@ using IkeMtz.NRSRx.Logging.Splunk;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
-namespace IkeMtz.NRSRx.Core.Jobs;
+namespace IkeMtz.NRSRx.Jobs.Core;
 
 /// <summary>
 /// Extension methods to setup logging on NRSRx framework

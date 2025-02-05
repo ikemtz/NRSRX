@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <PackageIcon>ProfilePic.jpg</PackageIcon>
+    <RepositoryUrl>https://github.com/ikemtz/NRSRx</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageLicense>https://raw.githubusercontent.com/ikemtz/NRSRx/master/LICENSE</PackageLicense>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <RepositoryType>Git</RepositoryType>
+    <Company>IkeMtz</Company>
+    <RepositoryUrl>https://github.com/ikemtz/NRSRx</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/ikemtz/NRSRx</PackageProjectUrl>
+    <PackageLicense>https://raw.githubusercontent.com/ikemtz/NRSRx/master/LICENSE</PackageLicense>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>ProfilePic.jpg</PackageIcon>
+    <PackageIconUrl />
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <ProjectGuid>15D811DB068A47E58E46B9AD5D7C6988</ProjectGuid>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>3B47F350AF26459DAD0DB68D9C20D0A3</UserSecretsId>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn>1701;1702;S2436;MSB3277;CS8604;CS8618;</NoWarn>
+    <DocumentationFile>./IkeMtz.NRSRx.Jobs.Redis.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\..\build\ProfilePic.jpg">
+      <Pack>True</Pack>
+      <PackagePath>
+      </PackagePath>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.12" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.7.3" />
+    <PackageReference Include="StackExchange.Redis" Version="2.8.24" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Events\IkeMtz.NRSRx.Events.Abstraction\IkeMtz.NRSRx.Events.Abstraction.csproj" />
+    <ProjectReference Include="..\..\Events\IkeMtz.NRSRx.Events.Subscribers.Redis\IkeMtz.NRSRx.Events.Subscribers.Redis.csproj" />
+    <ProjectReference Include="..\IkeMtz.NRSRx.Events.Subscribers.Redis\IkeMtz.NRSRx.Events.Subscribers.Redis.csproj" />
+    <ProjectReference Include="..\IkeMtz.NRSRx.Jobs.Core\IkeMtz.NRSRx.Jobs.Core.csproj" />
+  </ItemGroup>
+
+</Project>

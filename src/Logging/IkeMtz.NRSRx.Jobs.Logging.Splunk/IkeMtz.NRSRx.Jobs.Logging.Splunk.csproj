@@ -19,7 +19,7 @@
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <PropertyGroup>
     <NoWarn>1701;1702;IDE0060;S4792</NoWarn>
     <DocumentationFile>./IkeMtz.NRSRx.Jobs.Logging.Splunk.xml</DocumentationFile>
     <WarningsAsErrors>;NU1605</WarningsAsErrors>
@@ -35,17 +35,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.12" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="MSTest.TestFramework" Version="3.7.3" />
     <PackageReference Include="Serilog.Enrichers.Environment" Version="3.0.1" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
-    <PackageReference Include="Serilog.Sinks.Splunk" Version="5.0.1" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\IkeMtz.NRSRx.Core.Jobs\IkeMtz.NRSRx.Core.Jobs.csproj" />
+    <PackageReference Include="Serilog.Sinks.Splunk" Version="5.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\build\ProfilePic.jpg">
@@ -53,5 +54,8 @@
       <PackagePath>
       </PackagePath>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Jobs\IkeMtz.NRSRx.Jobs.Core\IkeMtz.NRSRx.Jobs.Core.csproj" />
   </ItemGroup>
 </Project>

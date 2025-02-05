@@ -4,12 +4,12 @@
         <name>IkeMtz.NRSRx.Jobs.Logging.Splunk</name>
     </assembly>
     <members>
-        <member name="T:IkeMtz.NRSRx.Core.Jobs.JobExtensions">
+        <member name="T:IkeMtz.NRSRx.Jobs.Core.JobExtensions">
             <summary>
             Extension methods to setup logging on NRSRx framework
             </summary>
         </member>
-        <member name="M:IkeMtz.NRSRx.Core.Jobs.JobExtensions.SetupSplunk(IkeMtz.NRSRx.Core.Jobs.IJob,Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+        <member name="M:IkeMtz.NRSRx.Jobs.Core.JobExtensions.SetupSplunk(IkeMtz.NRSRx.Jobs.Core.IJob,Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             Sets up the asp.net core application to log to a Splunk instance using a Splunk Http Event Collector.
             Refernce: https://docs.splunk.com/Documentation/SplunkCloud/8.2.2106/Data/UsetheHTTPEventCollector

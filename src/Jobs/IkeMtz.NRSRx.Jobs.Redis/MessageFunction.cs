@@ -1,7 +1,7 @@
-using IkeMtz.NRSRx.Core.Jobs;
 using IkeMtz.NRSRx.Core.Models;
 using IkeMtz.NRSRx.Events;
 using IkeMtz.NRSRx.Events.Subscribers.Redis;
+using IkeMtz.NRSRx.Jobs.Core;
 using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
 

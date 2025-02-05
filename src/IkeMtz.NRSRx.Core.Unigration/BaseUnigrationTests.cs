@@ -8,7 +8,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using IkeMtz.NRSRx.Core.EntityFramework;
-using IkeMtz.NRSRx.Core.Unigration.Logging;
+using IkeMtz.NRSRx.Unigration.Logging;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;

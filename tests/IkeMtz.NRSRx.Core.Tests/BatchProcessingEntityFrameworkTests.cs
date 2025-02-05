@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using IkeMtz.NRSRx.Core.EntityFramework;
 using IkeMtz.NRSRx.Core.Unigration;
 using IkeMtz.NRSRx.Core.Unigration.Data;
-using IkeMtz.NRSRx.Core.Unigration.Logging;
+using IkeMtz.NRSRx.Unigration.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace IkeMtz.NRSRx.Core.Tests

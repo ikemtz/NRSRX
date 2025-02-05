@@ -2,7 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace IkeMtz.NRSRx.Core.Unigration.Logging
+namespace IkeMtz.NRSRx.Unigration.Logging
 {
   /// <summary>
   /// Provides extension methods for adding a <see cref="TestContextLogger"/> to the logging builder.

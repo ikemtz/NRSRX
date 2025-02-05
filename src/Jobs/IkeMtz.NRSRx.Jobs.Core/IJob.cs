@@ -2,7 +2,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace IkeMtz.NRSRx.Core.Jobs
+namespace IkeMtz.NRSRx.Jobs.Core
 {
   /// <summary>
   /// Represents a job within the NRSRx framework.

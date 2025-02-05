@@ -1,4 +1,4 @@
-using IkeMtz.NRSRx.Core.Jobs;
+using IkeMtz.NRSRx.Jobs.Core;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -28,13 +28,11 @@ namespace Microsoft.Extensions.DependencyInjection
     /// <typeparam name="TFunction">The type of the message function to add.</typeparam>
     /// <param name="services">The service collection to add the message function to.</param>
     /// <returns>The service collection with the message function added.</returns>
+    [Obsolete("Use AddFunction<TFunction> instead.")]
     public static IServiceCollection AddMessageFunction<TFunction>(this IServiceCollection services)
     where TFunction : class, IMessageFunction
     {
-      services = services
-        .AddScoped<TFunction>()
-        .AddScoped<IMessageFunction, TFunction>();
-      return services;
+      return services.AddFunction<TFunction>();
     }
   }
 }

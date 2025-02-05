@@ -1,4 +1,4 @@
-namespace IkeMtz.NRSRx.Core.Jobs
+namespace IkeMtz.NRSRx.Jobs.Core
 {
   /// <summary>
   /// Represents a function that can be executed within the NRSRx framework.

@@ -1,21 +1,40 @@
 using System.Diagnostics.CodeAnalysis;
-using IkeMtz.NRSRx.Core.EntityFramework;
+using IkeMtz.NRSRx.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace IkeMtz.NRSRx.Core.Jobs
+namespace IkeMtz.NRSRx.Jobs.Core
 {
   /// <summary>
   /// Base class for defining a job in the NRSRx framework.
   /// </summary>
   /// <typeparam name="TProgram">The type of the program.</typeparam>
-  /// <typeparam name="TFunctionType">The type of the function.</typeparam>
-  public abstract class JobBase<TProgram, TFunctionType>
-      where TProgram : class, IJob
-      where TFunctionType : IFunction
+  public abstract class JobBase<TProgram>
+      where TProgram : class
   {
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the job should run continuously.
+    /// </summary>
+    public virtual bool RunContinously { get; set; } = true;
+
+    /// <summary>
+    /// Gets or sets a value indicating whether parallel function processing is enabled.
+    /// </summary>
+    public virtual bool EnableParallelFunctionProcessing { get; set; } = false;
+
+    /// <summary>
+    /// Gets or sets the number of seconds between runs.
+    /// </summary>
+    public virtual int? SecsBetweenRuns { get; set; }
+
+    /// <summary>
+    /// Gets the sleep time span based on the number of seconds between runs.
+    /// </summary>
+    public virtual TimeSpan SleepTimeSpan => new(0, 0, SecsBetweenRuns.GetValueOrDefault());
+
     /// <summary>
     /// Gets or sets the job host.
     /// </summary>
@@ -52,21 +71,43 @@ namespace IkeMtz.NRSRx.Core.Jobs
     }
 
     /// <summary>
-    /// Runs the functions asynchronously.
+    /// Runs the functions associated with the job.
     /// </summary>
-    /// <param name="loggerFactory">The logger factory.</param>
-    /// <returns>A task that represents the asynchronous operation. The task result contains a boolean indicating success.</returns>
-    public virtual async Task<bool> RunFunctions(ILoggerFactory loggerFactory)
+    /// <param name="loggerFactory">The logger factory to create loggers.</param>
+    /// <returns>A task that represents the asynchronous operation. The task result contains a boolean indicating whether the functions were successful.</returns>
+    public async Task<bool> RunFunctions(ILoggerFactory loggerFactory)
     {
+      SecsBetweenRuns ??= Configuration.GetValue("SecsBetweenRuns", 60);
+      var logger = loggerFactory.CreateLogger<JobBase<TProgram>>();
       var functions = GetFunctions(loggerFactory);
+      var firstRun = true;
       var successResult = true;
-      foreach (var func in functions)
+      while (RunContinously || firstRun)
       {
-        successResult &= await ScopeFunctionAsync(loggerFactory, func);
-      }
-      if (successResult && !string.IsNullOrWhiteSpace(HealthFileLocation))
-      {
-        File.WriteAllText(HealthFileLocation, DateTime.UtcNow.ToString());
+        if (EnableParallelFunctionProcessing)
+        {
+          foreach (var func in functions.AsParallel())
+          {
+            successResult &= await ScopeFunctionAsync(loggerFactory, func);
+          }
+        }
+        else
+        {
+          foreach (var func in functions)
+          {
+            successResult &= await ScopeFunctionAsync(loggerFactory, func);
+          }
+        }
+
+        if (successResult && !string.IsNullOrWhiteSpace(HealthFileLocation))
+        {
+          File.WriteAllText(HealthFileLocation, DateTime.UtcNow.ToString());
+        }
+
+        firstRun = false;
+        logger.LogInformation("Finished running jobs, going to sleep for {SecsBetweenRuns} seconds.", SecsBetweenRuns);
+
+        if (RunContinously) Thread.Sleep(SleepTimeSpan);
       }
       return successResult;
     }
@@ -80,8 +121,8 @@ namespace IkeMtz.NRSRx.Core.Jobs
     {
       var jobLogger = loggerFactory?.CreateLogger(GetType());
       using var functionScope = JobHost.Services.CreateScope();
-      var functions = functionScope.ServiceProvider.GetServices<TFunctionType>();
-      var functionTypeName = typeof(TFunctionType).Name;
+      var functions = functionScope.ServiceProvider.GetServices<IFunction>();
+      var functionTypeName = typeof(IFunction).Name;
       var functionCount = functions.Count();
       jobLogger?.LogInformation("Found {functionCount} executable {functionTypeName} functions", functionCount, functionTypeName);
       for (var i = 0; i < functionCount; i++)
@@ -170,7 +211,10 @@ namespace IkeMtz.NRSRx.Core.Jobs
     /// <param name="services">The service collection.</param>
     /// <returns>The service collection.</returns>
     [ExcludeFromCodeCoverage]
-    public virtual IServiceCollection SetupDependencies(IServiceCollection services) { return services; }
+    public virtual IServiceCollection SetupDependencies(IServiceCollection services)
+    {
+      return services.AddSingleton(TimeProvider.System);
+    }
 
     /// <summary>
     /// Sets up the functions.
@@ -186,7 +230,7 @@ namespace IkeMtz.NRSRx.Core.Jobs
     /// <returns>The service collection.</returns>
     public virtual IServiceCollection SetupUserProvider(IServiceCollection services)
     {
-      return services.AddSingleton<ICurrentUserProvider, SystemUserProvider>();
+      return services;
     }
 
     /// <summary>

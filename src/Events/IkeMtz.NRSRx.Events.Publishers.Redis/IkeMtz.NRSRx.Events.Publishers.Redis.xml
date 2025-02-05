@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IkeMtz.NRSRx.Events.Publishers.Redis</name>
+    </assembly>
+    <members>
+        <member name="T:IkeMtz.NRSRx.Events.Abstraction.Redis.RedisStreamCore`3">
+            <summary>
+            Core class for handling Redis streams for a specific entity and event type.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <typeparam name="TEvent">The type of the event.</typeparam>
+            <typeparam name="TIdentityType">The type of the entity identifier.</typeparam>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Abstraction.Redis.RedisStreamCore`3.EntityType">
+            <summary>
+            Gets the type of the entity.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Abstraction.Redis.RedisStreamCore`3.TypeName">
+            <summary>
+            Gets the name of the type.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Abstraction.Redis.RedisStreamCore`3.Connection">
+            <summary>
+            Gets the Redis connection multiplexer.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Abstraction.Redis.RedisStreamCore`3.Database">
+            <summary>
+            Gets the Redis database.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Abstraction.Redis.RedisStreamCore`3.StreamKey">
+            <summary>
+            Gets the Redis stream key.
+            </summary>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Events.Abstraction.Redis.RedisStreamCore`3.#ctor(StackExchange.Redis.IConnectionMultiplexer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IkeMtz.NRSRx.Events.Abstraction.Redis.RedisStreamCore`3"/> class.
+            </summary>
+            <param name="connection">The Redis connection multiplexer.</param>
+        </member>
+        <member name="T:IkeMtz.NRSRx.Events.Publishers.Redis.RedisStreamPublisher`2">
+            <summary>
+            Redis stream publisher for entities with a <see cref="T:System.Guid"/> identifier.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <typeparam name="TEvent">The type of the event.</typeparam>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Events.Publishers.Redis.RedisStreamPublisher`2.#ctor(StackExchange.Redis.IConnectionMultiplexer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IkeMtz.NRSRx.Events.Publishers.Redis.RedisStreamPublisher`2"/> class.
+            </summary>
+            <param name="connection">The Redis connection multiplexer.</param>
+        </member>
+        <member name="T:IkeMtz.NRSRx.Events.Publishers.Redis.RedisStreamPublisher`3">
+            <summary>
+            Redis stream publisher for entities.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <typeparam name="TEvent">The type of the event.</typeparam>
+            <typeparam name="TIdentityType">The type of the entity identifier.</typeparam>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Events.Publishers.Redis.RedisStreamPublisher`3.EntityName">
+            <summary>
+            Gets or sets the name of the entity.
+            </summary>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Events.Publishers.Redis.RedisStreamPublisher`3.#ctor(StackExchange.Redis.IConnectionMultiplexer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IkeMtz.NRSRx.Events.Publishers.Redis.RedisStreamPublisher`3"/> class.
+            </summary>
+            <param name="connection">The Redis connection multiplexer.</param>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Events.Publishers.Redis.RedisStreamPublisher`3.PublishAsync(`0)">
+            <summary>
+            Publishes an event asynchronously.
+            </summary>
+            <param name="payload">The entity payload.</param>
+            <returns>A task that represents the asynchronous publish operation.</returns>
+        </member>
+        <member name="T:IkeMtz.NRSRx.Events.Publishers.Redis.RedisStreamSplitMessagePublisher`2">
+            <summary>
+            Redis stream publisher for split messages of entities with a <see cref="T:System.Guid"/> identifier.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <typeparam name="TEvent">The type of the event.</typeparam>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Events.Publishers.Redis.RedisStreamSplitMessagePublisher`2.#ctor(StackExchange.Redis.IConnectionMultiplexer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IkeMtz.NRSRx.Events.Publishers.Redis.RedisStreamSplitMessagePublisher`2"/> class.
+            </summary>
+            <param name="connection">The Redis connection multiplexer.</param>
+        </member>
+    </members>
+</doc>

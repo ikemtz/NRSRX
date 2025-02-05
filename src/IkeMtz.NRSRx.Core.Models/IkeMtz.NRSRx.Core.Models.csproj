@@ -24,7 +24,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <PropertyGroup>
     <NoWarn>1701;1702;S2436;S3776;CS8618;MSB3277;</NoWarn>
     <DocumentationFile>./IkeMtz.NRSRx.Core.Models.xml</DocumentationFile>
   </PropertyGroup>

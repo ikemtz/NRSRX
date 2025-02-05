@@ -1,7 +1,7 @@
-using IkeMtz.NRSRx.Core.Jobs;
+using IkeMtz.NRSRx.Jobs.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace IkeMtz.NRSRx.Core.Unigration
+namespace IkeMtz.NRSRx.Jobs.Unigration
 {
   /// <summary>
   /// Represents a core integration test job for testing purposes.

@@ -2,7 +2,7 @@ using System.Collections.Concurrent;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace IkeMtz.NRSRx.Core.Unigration.Logging
+namespace IkeMtz.NRSRx.Unigration.Logging
 {
   /// <summary>
   /// Provides a logger provider that creates <see cref="TestContextLogger"/> instances.

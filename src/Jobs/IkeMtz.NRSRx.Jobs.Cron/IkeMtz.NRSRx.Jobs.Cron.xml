@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IkeMtz.NRSRx.Jobs.Cron</name>
+    </assembly>
+    <members>
+        <member name="T:IkeMtz.NRSRx.Jobs.Cron.CronFunction">
+            <summary>
+            Represents a scheduled function that can be executed based on a condition.
+            </summary>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Jobs.Cron.CronFunction.#ctor(Microsoft.Extensions.Logging.ILogger{IkeMtz.NRSRx.Jobs.Cron.CronFunction},System.TimeProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:IkeMtz.NRSRx.Jobs.Cron.CronFunction"/> class.
+            </summary>
+            <param name="logger">The logger instance.</param> 
+            <param name="timeProvider">The time provider instance.</param>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Jobs.Cron.CronFunction.LastRunDateTimeUtc">
+            <summary>
+            Gets or sets the last run date and time in UTC.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Jobs.Cron.CronFunction.NextRunDateTimeUtc">
+            <summary>
+            Gets or sets the next run date and time in UTC.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Jobs.Cron.CronFunction.Schedule">
+            <summary>
+            Gets or sets the schedule for the cron function.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Jobs.Cron.CronFunction.CronExpression">
+            <summary>
+            Gets or sets the cron expression for the function.
+            For guidance visit: https://crontab.guru/
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Jobs.Cron.CronFunction.SequencePriority">
+            <inheritdoc/>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Jobs.Cron.CronFunction.Logger">
+            <summary>
+            Gets the logger for the cron function.
+            </summary>
+        </member>
+        <member name="P:IkeMtz.NRSRx.Jobs.Cron.CronFunction.TimeProvider">
+            <summary>
+            Gets the time provider for the cron function.
+            </summary>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Jobs.Cron.CronFunction.RunAsync">
+            <summary>
+            Executes the function asynchronously.
+            </summary>
+            <returns>A task that represents the asynchronous operation. The task result contains a boolean value indicating whether the function executed successfully.</returns>
+        </member>
+        <member name="M:IkeMtz.NRSRx.Jobs.Cron.CronFunction.ExecuteAsync">
+            <summary>
+            Executes the function logic asynchronously.
+            </summary>
+            <returns>A task that represents the asynchronous operation. The task result contains a boolean value indicating whether the function executed successfully.</returns>
+        </member>
+    </members>
+</doc>

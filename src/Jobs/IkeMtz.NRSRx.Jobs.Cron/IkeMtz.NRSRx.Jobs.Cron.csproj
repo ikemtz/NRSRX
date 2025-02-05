@@ -24,7 +24,7 @@
     <PackageIcon>ProfilePic.jpg</PackageIcon>
     <PackageIconUrl />
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <ProjectGuid>15D811DB068A47E58E46B9AD5D7C6988</ProjectGuid>
+    <ProjectGuid>E2983189CEDC49869E4F062A1B467973</ProjectGuid>
     <AnalysisLevel>latest</AnalysisLevel>
     <Nullable>enable</Nullable>
     <UserSecretsId>3B47F350AF26459DAD0DB68D9C20D0A3</UserSecretsId>
@@ -32,21 +32,31 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <PropertyGroup>
     <NoWarn>1701;1702;S2436;MSB3277;CS8604;CS8618;</NoWarn>
-    <DocumentationFile>./IkeMtz.NRSRx.Jobs.Redis.xml</DocumentationFile>
+    <DocumentationFile>./IkeMtz.NRSRx.Jobs.Cron.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\..\..\build\ProfilePic.jpg">
+    <None Include="..\..\..\build\ProfilePic.jpg" Link="ProfilePic.jpg">
+      <PackagePath></PackagePath>
       <Pack>True</Pack>
-      <PackagePath>
-      </PackagePath>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\IkeMtz.NRSRx.Core.Jobs\IkeMtz.NRSRx.Core.Jobs.csproj" />
-    <ProjectReference Include="..\IkeMtz.NRSRx.Events.Abstraction\IkeMtz.NRSRx.Events.Abstraction.csproj" />
-    <ProjectReference Include="..\IkeMtz.NRSRx.Events.Subscribers.Redis\IkeMtz.NRSRx.Events.Subscribers.Redis.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.12" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="MSTest.TestFramework" Version="3.7.3" />
+    <PackageReference Include="NCrontab.Signed" Version="3.3.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IkeMtz.NRSRx.Jobs.Core\IkeMtz.NRSRx.Jobs.Core.csproj" />
   </ItemGroup>
 
 </Project>

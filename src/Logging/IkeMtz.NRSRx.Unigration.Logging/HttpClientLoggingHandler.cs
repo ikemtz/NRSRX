@@ -1,10 +1,6 @@
-using System.Linq;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace IkeMtz.NRSRx.Core.Unigration.Logging
+namespace IkeMtz.NRSRx.Unigration.Logging
 {
   /// <summary>
   /// A delegating handler that logs HTTP client requests and responses for testing purposes.

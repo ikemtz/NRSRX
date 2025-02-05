@@ -1,4 +1,4 @@
-using IkeMtz.NRSRx.Core.Unigration;
+using IkeMtz.NRSRx.Jobs.Unigration;
 using IkeMtz.Samples.Jobs;
 
 namespace IkeMtz.NRSRx.Core.Jobs.Tests.Integration
